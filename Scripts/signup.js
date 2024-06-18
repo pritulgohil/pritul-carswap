@@ -7,13 +7,19 @@ document.addEventListener("DOMContentLoaded", function () {
   let cityName = document.getElementById("city-name");
   let signupAlert = document.getElementById("signup-alert");
   let spinner = document.getElementById("spinner");
+  let signupForm = document.getElementById("signup-form");
 
-  signupAlert.style.display = "none";
-  spinner.style.display = "none";
+  signupAlert.classList.add("d-none");
+  spinner.classList.add("d-none");
 
-  signupButton.addEventListener("click", function (event) {
+  signupForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    signupUser();
+    if (signupForm.checkValidity() === false) {
+      event.stopPropagation();
+    } else {
+      signupUser();
+    }
+    signupForm.classList.add("was-validated");
   });
 
   function signupUser() {
@@ -26,16 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let lastN = lastName.value;
     let cityN = cityName.value;
 
-    console.log(selectedValue);
-    console.log(firstName.value);
-    console.log(lastName.value);
-    console.log(emailInput.value);
-    console.log(passwordInput.value);
-    console.log(cityName.value);
-
     if (email && pwd) {
       signupButton.textContent = "Signing Up..";
-      spinner.style.display = "block";
+      spinner.classList.remove("d-none");
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, pwd)
@@ -52,9 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
               cityName: cityN,
             })
             .then(() => {
-              console.log("User data saved successfully");
               setTimeout(() => {
-                signupAlert.style.display = "block";
+                signupAlert.classList.remove("d-none");
+                spinner.classList.add("d-none");
                 setTimeout(() => {
                   window.location.href = "login.html";
                 }, 2000);
@@ -62,10 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch((error) => {
               console.error("Error saving user data: ", error);
+              signupButton.textContent = "Signup";
+              spinner.classList.add("d-none");
             });
         })
         .catch((error) => {
           console.error("Error creating user: ", error);
+          signupButton.textContent = "Signup";
+          spinner.classList.add("d-none");
         });
     } else {
       console.error("Email and password must be provided");
