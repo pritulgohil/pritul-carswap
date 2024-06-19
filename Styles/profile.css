@@ -161,6 +161,7 @@ select {
     width: 90%;
     flex-direction: column;
     height: unset;
+    margin-bottom: 100px;
   }
 
   .profile-section-1-container {
