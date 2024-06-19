@@ -13,6 +13,10 @@
       crossorigin="anonymous"
     />
     <title>CarSwap</title>
+    <script
+      src="https://kit.fontawesome.com/68cd47e680.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg p-4">
@@ -37,7 +41,14 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">My Profile</a>
+              <a class="nav-link" aria-current="page" href="sellcar.html"
+                >Sell Car</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" id="profile-name" href="profile.html"
+                >My Profile</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.html">Wishlist</a>
@@ -51,7 +62,89 @@
     </nav>
     <div class="main">
       <div class="main-container">
-        <div id="profile-card" class="profile-card">
+        <div class="profile-section-1">
+          <div class="profile-section-1-container" id="profile-section">
+            <div class="profile-avatar">
+              <img src="Assets/profile-image-placeholder.jpeg" alt="" />
+            </div>
+            <div class="profile-data">
+              <h2 class="profile-name" id="profile-username"></h2>
+              <p class="profile-info">
+                <i class="fa-solid fa-at"></i> pritulgohil@gmail.com
+              </p>
+              <p class="profile-info">
+                <i class="fa-solid fa-location-dot"></i> London, Ontario
+              </p>
+            </div>
+          </div>
+          <div class="edit-button" id="edit-button">
+            <button class="edit-btn" id="edit-btn">
+              <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+            </button>
+          </div>
+          <div class="edit-profile-form" id="edit-profile">
+            <div class="profile-avatar">
+              <img src="Assets/profile-image-placeholder.jpeg" alt="" />
+              <button class="upload-btn">
+                <i class="fa-solid fa-upload"></i> Upload
+              </button>
+            </div>
+            <div class="profile-form">
+              <div class="side1">
+                <div class="firstName edit-form">
+                  <label for="firstname">First Name</label>
+                  <input type="text" placeholder="First Name" />
+                </div>
+                <div class="lastName edit-form">
+                  <label for="city">City</label>
+                  <input type="text" placeholder="City" />
+                </div>
+              </div>
+              <div class="side2">
+                <div class="cityName edit-form">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" placeholder="Last Name" />
+                </div>
+                <div class="provinceName edit-form">
+                  <label for="provincename">Province</label>
+                  <select id="province" name="province" required>
+                    <option value="" disabled selected>
+                      Change your province
+                    </option>
+                    <option value="AB">Alberta</option>
+                    <option value="BC">British Columbia</option>
+                    <option value="MB">Manitoba</option>
+                    <option value="NB">New Brunswick</option>
+                    <option value="NL">Newfoundland and Labrador</option>
+                    <option value="NS">Nova Scotia</option>
+                    <option value="ON">Ontario</option>
+                    <option value="PE">Prince Edward Island</option>
+                    <option value="QC">Quebec</option>
+                    <option value="SK">Saskatchewan</option>
+                    <option value="NT">Northwest Territories</option>
+                    <option value="NU">Nunavut</option>
+                    <option value="YT">Yukon</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="first-name">
+              <label for="firstName">First Name</label>
+              <input type="text" placeholder="First Name" />
+            </div>
+            <div class="last-name">
+              <label for="lastName">Last Name</label>
+              <input type="text" placeholder="Last Name" />
+            </div> -->
+          </div>
+          <div class="save-button" id="save-btn">
+            <button class="save-btn">
+              <i class="fa-solid fa-check"></i> Save Profile
+            </button>
+            <button class="save-btn cancel" id="cancel">Cancel</button>
+          </div>
+        </div>
+        <!-- <div id="profile-card" class="profile-card">
           <div class="profile-card-container">
             <form
               class="row g-3 needs-validation"
@@ -142,7 +235,7 @@
             </div>
             <div id="profile-data" class="profile-data"></div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>

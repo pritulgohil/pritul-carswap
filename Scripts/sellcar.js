@@ -1,17 +1,22 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getStorage,
-  ref,
+  ref as storageRef,
   uploadBytes,
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
 import {
   getDatabase,
   ref as dbRef,
   set,
   push,
+  get,
+  child,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUXbpad1YMDEJ5gNUg9jCzDXuiY4mFeZ0",
@@ -26,6 +31,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 const database = getDatabase(app);
+const auth = getAuth(app);
 
 const makeInput = document.getElementById("make");
 const colorInput = document.getElementById("color");
@@ -34,8 +40,47 @@ const yearInput = document.getElementById("year");
 const priceInput = document.getElementById("price");
 const mileageInput = document.getElementById("mileage");
 const carListingForm = document.getElementById("car-listing-form");
+let profileName = document.getElementById("profile-name");
 
 let imageUrl = "";
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("User is signed in:", user.uid);
+
+    get(child(dbRef(database), `users/${user.uid}`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const user = snapshot.val();
+          console.log(user.firstName);
+          profileName.textContent = `${user.firstName}'s Profile`;
+
+          placeholderDiv.style.display = "block";
+          setTimeout(() => {
+            placeholderDiv.style.display = "none";
+            mainDiv.style.display = "block";
+          }, 3000);
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  } else {
+    console.log("No user is signed in.");
+
+    setTimeout(() => {
+      window.location.href = "./login.html";
+    }, 3000);
+
+    setTimeout(() => {
+      console.log("Login required");
+      loginAlert.textContent = "Login Required!";
+      loginAlert.style.color = "red";
+    }, 1000);
+  }
+});
 
 const uploadButton = document.getElementById("uploadButton");
 uploadButton.addEventListener("click", (e) => {
@@ -47,9 +92,9 @@ function uploadImage() {
   const file = document.getElementById("imageUpload").files[0];
 
   if (file) {
-    const storageRef = ref(storage, "images/" + file.name);
+    const storageReference = storageRef(storage, "images/" + file.name);
 
-    uploadBytes(storageRef, file)
+    uploadBytes(storageReference, file)
       .then((snapshot) => {
         console.log("Image uploaded successfully!");
         getDownloadURL(snapshot.ref)
