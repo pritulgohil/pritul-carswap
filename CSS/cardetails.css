@@ -68,7 +68,7 @@
 
 .car-description {
   font-size: 16px;
-  margin-top: 50px;
+  margin-top: 30px;
   line-height: 35px;
 }
 
@@ -84,5 +84,9 @@
   .car-info-container {
     font-size: 15px;
     font-weight: bold;
+  }
+
+  .car-description {
+    margin-top: 20px;
   }
 }
