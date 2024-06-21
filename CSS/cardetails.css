@@ -63,6 +63,7 @@
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
+  font-size: 30px;
 }
 
 .car-description {
@@ -78,5 +79,10 @@
 
   .img-container img {
     height: 300px;
+  }
+
+  .car-info-container {
+    font-size: 15px;
+    font-weight: bold;
   }
 }
