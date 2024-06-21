@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Styles/profile.css" />
+    <link rel="stylesheet" href="CSS/profile.css" />
     <link rel="manifest" href="/manifest.json" />
 
     <link
@@ -18,6 +18,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
+
   <body>
     <nav class="navbar navbar-expand-lg p-4">
       <div class="container-fluid">
@@ -65,15 +66,22 @@
         <div class="profile-section-1">
           <div class="profile-section-1-container" id="profile-section">
             <div class="profile-avatar">
-              <img src="Assets/profile-image-placeholder.jpeg" alt="" />
+              <img
+                id="profileImg"
+                src="Assets/profile-image-placeholder.jpeg"
+                alt=""
+              />
             </div>
             <div class="profile-data">
               <h2 class="profile-name" id="profile-username"></h2>
               <p class="profile-info">
-                <i class="fa-solid fa-at"></i> pritulgohil@gmail.com
+                <i class="fa-solid fa-at"></i>
+                <span id="email"> Email address</span>
               </p>
               <p class="profile-info">
-                <i class="fa-solid fa-location-dot"></i> London, Ontario
+                <i class="fa-solid fa-location-dot"></i>
+                <span id="city"> City Name</span>,
+                <span id="state"> State name</span>
               </p>
             </div>
           </div>
@@ -84,8 +92,12 @@
           </div>
           <div class="edit-profile-form" id="edit-profile">
             <div class="profile-avatar">
-              <img src="Assets/profile-image-placeholder.jpeg" alt="" />
-              <button class="upload-btn">
+              <img
+                src="Assets/profile-image-placeholder.jpeg"
+                alt=""
+                id="new-profile"
+              />
+              <button class="upload-btn" id="uploadPicture">
                 <i class="fa-solid fa-upload"></i> Upload
               </button>
             </div>
@@ -93,17 +105,25 @@
               <div class="side1">
                 <div class="firstName edit-form">
                   <label for="firstname">First Name</label>
-                  <input type="text" placeholder="First Name" />
+                  <input
+                    id="input-f-name"
+                    type="text"
+                    placeholder="First Name"
+                  />
                 </div>
                 <div class="lastName edit-form">
                   <label for="city">City</label>
-                  <input type="text" placeholder="City" />
+                  <input id="input-city" type="text" placeholder="City" />
                 </div>
               </div>
               <div class="side2">
                 <div class="cityName edit-form">
                   <label for="lastname">Last Name</label>
-                  <input type="text" placeholder="Last Name" />
+                  <input
+                    id="input-l-name"
+                    type="text"
+                    placeholder="Last Name"
+                  />
                 </div>
                 <div class="provinceName edit-form">
                   <label for="provincename">Province</label>
@@ -111,19 +131,19 @@
                     <option value="" disabled selected>
                       Change your province
                     </option>
-                    <option value="AB">Alberta</option>
-                    <option value="BC">British Columbia</option>
-                    <option value="MB">Manitoba</option>
-                    <option value="NB">New Brunswick</option>
-                    <option value="NL">Newfoundland and Labrador</option>
-                    <option value="NS">Nova Scotia</option>
-                    <option value="ON">Ontario</option>
-                    <option value="PE">Prince Edward Island</option>
-                    <option value="QC">Quebec</option>
-                    <option value="SK">Saskatchewan</option>
-                    <option value="NT">Northwest Territories</option>
-                    <option value="NU">Nunavut</option>
-                    <option value="YT">Yukon</option>
+                    <option>Alberta</option>
+                    <option>British Columbia</option>
+                    <option>Manitoba</option>
+                    <option>New Brunswick</option>
+                    <option>Newfoundland and Labrador</option>
+                    <option>Nova Scotia</option>
+                    <option>Ontario</option>
+                    <option>Prince Edward Island</option>
+                    <option>Quebec</option>
+                    <option>Saskatchewan</option>
+                    <option>Northwest Territories</option>
+                    <option>Nunavut</option>
+                    <option>Yukon</option>
                   </select>
                 </div>
               </div>
@@ -138,121 +158,17 @@
             </div> -->
           </div>
           <div class="save-button" id="save-btn">
-            <button class="save-btn">
+            <button id="save-btn" class="save-btn">
               <i class="fa-solid fa-check"></i> Save Profile
             </button>
             <button class="save-btn cancel" id="cancel">Cancel</button>
           </div>
         </div>
-        <!-- <div id="profile-card" class="profile-card">
-          <div class="profile-card-container">
-            <form
-              class="row g-3 needs-validation"
-              id="signup-form"
-              style="width: 100%"
-              novalidate
-            >
-              <div class="col-12">
-                <label for="validationCustom01" class="form-label"
-                  >First name</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="firstName"
-                  required
-                />
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-              <div class="col-12">
-                <label for="validationCustom02" class="form-label"
-                  >Last name</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="lastName"
-                  required
-                />
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label"
-                  >Email</label
-                >
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="emailInput"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose an email.</div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <label for="validationCustom04" class="form-label"
-                  >Province</label
-                >
-                <select class="form-select" id="province-dropdown" required>
-                  <option selected disabled value="">Choose...</option>
-                  <option>Ontario</option>
-                  <option>Quebec</option>
-                  <option>Nova Scotia</option>
-                  <option>New Brunswick</option>
-                  <option>Manitoba</option>
-                  <option>British Columbia</option>
-                  <option>Prince Edward Island</option>
-                  <option>Saskatchewan</option>
-                  <option>New Foundland and Labrador</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid province.
-                </div>
-              </div>
-              <div class="col-12">
-                <label for="validationCustom05" class="form-label">City</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="city-name"
-                  required
-                />
-                <div class="invalid-feedback">Please provide a valid city.</div>
-              </div>
-              <div class="col-12">
-                <button id="save-button" class="btn btn-primary" type="submit">
-                  Save
-                </button>
-              </div>
-            </form>
-
-            <div id="avatar" class="avatar">
-              <img src="Assets/profile-image-placeholder.jpeg" alt="" />
-            </div>
-            <div id="profile-data" class="profile-data"></div>
-          </div>
-        </div> -->
       </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyBUXbpad1YMDEJ5gNUg9jCzDXuiY4mFeZ0",
-        authDomain: "carswap-77314.firebaseapp.com",
-        databaseURL: "https://carswap-77314-default-rtdb.firebaseio.com",
-        projectId: "carswap-77314",
-        storageBucket: "carswap-77314.appspot.com",
-        messagingSenderId: "142942062618",
-        appId: "1:142942062618:web:a4640695de4f70f5cf69a3",
-      };
-      firebase.initializeApp(firebaseConfig);
-    </script>
-    <script src="Scripts/profile.js"></script>
+
+    <script type="module" src="Scripts/firebaseConfig.js"></script>
+
+    <script type="module" src="Scripts/profile.js"></script>
   </body>
 </html>

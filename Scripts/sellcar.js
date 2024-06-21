@@ -41,6 +41,7 @@ const priceInput = document.getElementById("price");
 const mileageInput = document.getElementById("mileage");
 const carListingForm = document.getElementById("car-listing-form");
 let profileName = document.getElementById("profile-name");
+let submitBtn = document.getElementById("submit");
 
 let imageUrl = "";
 
@@ -149,6 +150,15 @@ carListingForm.addEventListener("submit", (e) => {
   };
 
   addCarToList(carObject);
+
+  console.log("Test");
+});
+
+submitBtn.addEventListener("click", function () {
+  submitBtn.textContent = "Submitting...";
+  setTimeout(function () {
+    window.location.href = "./shopcars.html";
+  }, 3000);
 });
 
 function addCarToList(carObject) {
