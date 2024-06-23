@@ -16,6 +16,7 @@ let carMileage = document.getElementById("mileage");
 let carYear = document.getElementById("year");
 let carDescription = document.getElementById("car-description");
 let heart = document.getElementById("heart");
+let carOwner = document.getElementById("list-owner");
 let carId;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carPrice.innerHTML = `<i class="fa-solid fa-dollar-sign"></i> ${carDetails.price}`;
         carColor.innerHTML = `<i class="fa-solid fa-paint-roller"></i> ${carDetails.color}`;
         carMileage.innerHTML = `<i class="fa-solid fa-road"></i> ${carDetails.milage}`;
-        carYear.innerHTML = `<i class="fa-solid fa-paint-roller"></i> ${carDetails.year}`;
+        carYear.innerHTML = `<i class="fa-solid fa-calendar-days"></i> ${carDetails.year}`;
         carDescription.innerHTML = `Introducing a pristine ${carDetails.color} ${carDetails.year} ${carDetails.make} ${carDetails.model}, a stylish and reliable compact car perfect for both city driving and longer journeys. Priced at an affordable $${carDetails.price}, this vehicle offers excellent value for its class. With ${carDetails.milage} kilometres on the odometer, it demonstrates durability and consistent performance over the years. The ${carDetails.make} ${carDetails.model} is renowned for its sporty design, fuel efficiency, and smooth handling. Its sleek white exterior is complemented by a well-maintained interior, featuring modern amenities and comfortable seating. Whether you're commuting daily or planning road trips, this ${carDetails.make} ${carDetails.model} promises a dependable and enjoyable driving experience. Don't miss the chance to own this versatile and economical vehicle that combines quality, affordability, and style.`;
       } else {
         console.log("No data available for this car ID.");
@@ -50,6 +51,7 @@ onAuthStateChanged(auth, function (user) {
       .then((snapshot) => {
         const user = snapshot.val();
         profileName.textContent = `${user.firstName}'s Profile`;
+        carOwner.innerHTML = `Listed by ${user.firstName} ${user.lastName}`;
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);

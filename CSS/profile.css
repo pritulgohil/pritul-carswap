@@ -4,6 +4,7 @@ nav {
 
 .main-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 100px;
@@ -155,6 +156,31 @@ select {
 .cancel {
   background-color: #ba1200;
 }
+.my-listings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.mylisting-container {
+  width: 80%;
+  border-radius: 20px;
+  border: 1px solid gray;
+  padding: 30px;
+}
+
+.section-header {
+  font-size: 50px;
+  color: rgb(95, 95, 95);
+}
+
+.card-img-top {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
 
 @media only screen and (max-width: 900px) {
   .profile-section-1 {
@@ -203,5 +229,10 @@ select {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     margin-top: 30px;
+  }
+
+  .mylisting-container {
+    width: 90%;
+    padding: 30px;
   }
 }

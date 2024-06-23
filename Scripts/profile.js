@@ -39,6 +39,8 @@ let cancelBtn = document.getElementById("cancel");
 
 let uploadBtn = document.getElementById("uploadPicture");
 
+let cardContainer = document.getElementById("card-container");
+
 let uid = "";
 
 onAuthStateChanged(auth, function (user) {
@@ -195,4 +197,69 @@ uploadBtn.addEventListener("click", () => {
     }
   });
   picture.click();
+});
+
+// onAuthStateChanged(auth, function (user) {
+//   if (user) {
+//     const ref = dbRef(database);
+
+//     get(child(ref, `users/${user.uid}/myListings`))
+//       .then((snapshot) => {
+//         const carListings = snapshot.val();
+//         console.log(carListings);
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching car listings:", error);
+//       });
+//   } else {
+//     console.log("No user is signed in.");
+//   }
+// });
+
+onAuthStateChanged(auth, function (user) {
+  if (user) {
+    const ref = dbRef(database);
+
+    get(child(ref, `users/${user.uid}/myListings`))
+      .then((snapshot) => {
+        const carListings = snapshot.val();
+        if (carListings) {
+          Object.keys(carListings).forEach((listingKey) => {
+            const listing = carListings[listingKey];
+            console.log("Listing Key:", listingKey);
+            console.log("Listing Details:", listing);
+            cardContainer.innerHTML += `<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card" style="width: 100%">
+              <img src="${listing.image}" class="card-img-top" alt="Card image"/>
+              <div class="card-body">
+                <h5 class="card-title">${listing.make} ${listing.model}</h5>
+                <p class="card-text">
+                  ${listing.color} ${listing.year} ${listing.make} ${listing.model} with ${listing.milage} kilometres, priced at $${listing.price}.
+                </p>
+                <a href="cardetails.html" id=${listingKey} class="btn btn-primary view-details">View Details</a>
+              </div>
+            </div>
+          </div>`;
+          });
+
+          var buttons = document.querySelectorAll(".view-details");
+          buttons.forEach(function (button) {
+            button.addEventListener("click", function (event) {
+              event.preventDefault();
+              const carId = button.id;
+              console.log("Button clicked for car ID:", carId);
+              localStorage.setItem("selectedCarId", carId);
+              window.location.href = "./cardetails.html";
+            });
+          });
+        } else {
+          console.log("No listings found.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching car listings:", error);
+      });
+  } else {
+    console.log("No user is signed in.");
+  }
 });

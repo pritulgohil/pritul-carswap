@@ -89,4 +89,16 @@
   .car-description {
     margin-top: 20px;
   }
+
+  .header {
+    font-size: 35px;
+  }
+
+  .owner {
+    font-size: 15px;
+  }
+
+  .heart {
+    font-size: 35px;
+  }
 }

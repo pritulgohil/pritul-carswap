@@ -162,12 +162,33 @@ submitBtn.addEventListener("click", function () {
 });
 
 function addCarToList(carObject) {
-  const newCarRef = push(dbRef(database, "carListing"));
-  set(newCarRef, carObject)
-    .then(() => {
-      console.log("Car list data saved to the new node: ", newCarRef);
-    })
-    .catch((error) => {
-      console.log("error : ", error);
-    });
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  if (user) {
+    const userId = user.uid;
+    const newCarRef = push(dbRef(database, "carListing"));
+
+    set(newCarRef, carObject)
+      .then(() => {
+        console.log("Car list data saved to the new node: ", newCarRef.key);
+
+        const myListingsRef = dbRef(
+          database,
+          `users/${userId}/myListings/${newCarRef.key}`
+        );
+        set(myListingsRef, carObject)
+          .then(() => {
+            console.log("Car reference added to user's myListings node.");
+          })
+          .catch((error) => {
+            console.log("Error adding car reference to myListings: ", error);
+          });
+      })
+      .catch((error) => {
+        console.log("Error saving car list data: ", error);
+      });
+  } else {
+    console.log("No user is signed in.");
+  }
 }
