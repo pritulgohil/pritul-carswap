@@ -50,9 +50,6 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Wishlist</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" id="logout-button" href="#">Logout</a>
             </li>
           </ul>
@@ -61,6 +58,10 @@
     </nav>
     <div class="page-header">
       <h1 id="heading-alert">Shop Cars</h1>
+    </div>
+    <div class="search-input">
+      <input id="car-search" placeholder="Search Cars by Make" type="text" />
+      <button id="search-button">Search</button>
     </div>
     <div id="placeholder" class="placeholder-card">
       <div class="container mt-4">
@@ -170,212 +171,7 @@
     </div>
     <div id="main" class="main">
       <div class="container mt-4">
-        <div id="card-container" class="row">
-          <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card" style="width: 100%">
-              <img
-                src="Assets/card-display.jpg"
-                class="card-img-top"
-                alt="Card image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div> -->
-        </div>
+        <div id="card-container" class="row"></div>
       </div>
     </div>
 
